@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactHighstock from 'react-highcharts/ReactHighstock.src'
+import Highcharts from 'highcharts/highstock'
+import HighchartsReact from 'highcharts-react-official'
 
 const data = [
   [1220832000000, 22.56],
@@ -93,7 +94,13 @@ const config = {
 }
 
 const HighstockComponent = () => {
-  return <ReactHighstock config={config} />
+  return (
+    <HighchartsReact
+      highcharts={Highcharts}
+      constructorType={'stockChart'}
+      options={config}
+    />
+  )
 }
 
 export default HighstockComponent

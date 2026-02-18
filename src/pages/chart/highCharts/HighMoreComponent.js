@@ -1,10 +1,11 @@
 import React from 'react'
-import ReactHighcharts from 'react-highcharts'
-import HighchartsExporting from 'highcharts-exporting'
-import HighchartsMore from 'highcharts-more'
+import Highcharts from 'highcharts'
+import HighchartsMore from 'highcharts/highcharts-more'
+import Exporting from 'highcharts/modules/exporting'
+import HighchartsReact from 'highcharts-react-official'
 
-HighchartsMore(ReactHighcharts.Highcharts)
-HighchartsExporting(ReactHighcharts.Highcharts)
+HighchartsMore(Highcharts)
+Exporting(Highcharts)
 
 const config = {
   chart: {
@@ -47,7 +48,7 @@ const config = {
 }
 
 const HighMoreComponent = () => {
-  return <ReactHighcharts config={config} />
+  return <HighchartsReact highcharts={Highcharts} options={config} />
 }
 
 export default HighMoreComponent

@@ -1,5 +1,6 @@
 import React from 'react'
-import ReactHighmaps from 'react-highcharts/ReactHighmaps.src'
+import Highcharts from 'highcharts/highmaps'
+import HighchartsReact from 'highcharts-react-official'
 import maps from './mapdata/europe'
 
 const config = {
@@ -76,6 +77,6 @@ const config = {
 }
 
 const HighmapsComponent = () => {
-  return <ReactHighmaps config={config} />
+  return <HighchartsReact highcharts={Highcharts} constructorType={'mapChart'} options={config} />
 }
 export default HighmapsComponent
