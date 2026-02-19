@@ -181,6 +181,8 @@ let colorPalette = [
 
 if (echarts && typeof echarts.registerTheme === 'function') {
   echarts.registerTheme('macarons', theme)
-} else if (typeof console !== 'undefined' && console.error) {
-  console.error('ECharts is not loaded, failed to register macarons theme')
+} else {
+  // Console may be used only to report theme registration failure; suppress lint here
+  // eslint-disable-next-line no-console
+  if (typeof console !== 'undefined' && console.error) console.error('ECharts is not loaded, failed to register macarons theme')
 }

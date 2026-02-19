@@ -1,4 +1,4 @@
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 
 // strip known locale prefix (e.g. /zh, /en, /pt-br) before matching
 const stripLocale = (p) => p.replace(/^\/(en|zh|pt-br)(\/|$)/, '/')

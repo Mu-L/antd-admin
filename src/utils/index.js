@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash'
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 import store from 'store'
 import { i18n } from '@lingui/core'
 

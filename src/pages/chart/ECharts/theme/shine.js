@@ -66,12 +66,12 @@ let colorPalette = [
 
     map: {
       label: { color: '#c12e34' },
-      emphasis: { label: { color: '#c12e34' } },
       itemStyle: {
         borderColor: '#eee',
         areaColor: '#ddd',
       },
       emphasis: {
+        label: { color: '#c12e34' },
         itemStyle: {
           areaColor: '#e6b600',
         },
@@ -119,6 +119,8 @@ let colorPalette = [
   }
 if (echarts && typeof echarts.registerTheme === 'function') {
   echarts.registerTheme('shine', theme)
-} else if (typeof console !== 'undefined' && console.error) {
-  console.error('ECharts is not loaded, failed to register shine theme')
+} else {
+  // Console may be used only to report theme registration failure; suppress lint here
+  // eslint-disable-next-line no-console
+  if (typeof console !== 'undefined' && console.error) console.error('ECharts is not loaded, failed to register shine theme')
 }

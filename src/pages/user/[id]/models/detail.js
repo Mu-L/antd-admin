@@ -1,9 +1,9 @@
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 import api from 'api'
 
 const { queryUser } = api
 
-export default {
+const userDetailModel = {
   namespace: 'userDetail',
 
   state: {
@@ -48,3 +48,5 @@ export default {
     },
   },
 }
+
+export default userDetailModel

@@ -13,6 +13,7 @@ const GlobalFooter = ({ className, links, copyright }) => {
               key={link.key}
               title={link.key}
               target={link.blankTarget ? '_blank' : '_self'}
+              rel={link.blankTarget ? 'noreferrer noopener' : undefined}
               href={link.href}
             >
               {link.title}

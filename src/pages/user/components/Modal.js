@@ -31,7 +31,10 @@ class UserModal extends PureComponent {
         onOk(data)
       })
       .catch(errorInfo => {
-        console.log(errorInfo)
+        if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.error(errorInfo)
+        }
       })
   }
 
@@ -67,7 +70,7 @@ class UserModal extends PureComponent {
             label={i18n._('Phone')} hasFeedback {...formItemLayout}>
             <Input />
           </FormItem>
-          <FormItem name='email' rules={[{ required: true, pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/, message: i18n._('The input is not valid E-mail!'), }]}
+          <FormItem name='email' rules={[{ required: true, pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/ , message: i18n._('The input is not valid E-mail!'), }]}
             label={i18n._('Email')} hasFeedback {...formItemLayout}>
             <Input />
           </FormItem>

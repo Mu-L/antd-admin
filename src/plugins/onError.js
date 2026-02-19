@@ -1,13 +1,15 @@
 import { message } from 'antd'
 
-export default {
+const onErrorHandler = {
   onError(e, a) {
     e.preventDefault()
     if (e.message) {
       message.error(e.message)
     } else {
-      /* eslint-disable */
+      // eslint-disable-next-line no-console
       console.error(e)
     }
   },
 }
+
+export default onErrorHandler

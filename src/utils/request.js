@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { cloneDeep } from 'lodash'
-const { parse, compile } = require("path-to-regexp")
+import { parse, compile } from 'path-to-regexp'
 import { message } from 'antd'
 import { CANCEL_REQUEST_MESSAGE } from 'utils/constant'
 
@@ -13,7 +13,7 @@ export default function request(options) {
 
   try {
     let domain = ''
-    const urlMatch = url.match(/[a-zA-z]+:\/\/[^/]*/)
+    const urlMatch = url.match(/[A-Za-z]+:\/\/[^/]*/)
     if (urlMatch) {
       ;[domain] = urlMatch
       url = url.slice(domain.length)
@@ -62,9 +62,9 @@ export default function request(options) {
       })
     })
     .catch(error => {
-      const { response, message } = error
+      const { response, message: errMsg } = error
 
-      if (String(message) === CANCEL_REQUEST_MESSAGE) {
+      if (String(errMsg) === CANCEL_REQUEST_MESSAGE) {
         return {
           success: false,
         }
@@ -79,7 +79,7 @@ export default function request(options) {
         msg = data.message || statusText
       } else {
         statusCode = 600
-        msg = error.message || 'Network Error'
+        msg = errMsg || error.message || 'Network Error'
       }
 
       /* eslint-disable */

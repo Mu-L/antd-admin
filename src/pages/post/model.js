@@ -1,6 +1,6 @@
 import modelExtend from 'dva-model-extend'
 import api from 'api'
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 import { pageModel } from 'utils/model'
 
 const { queryPostList } = api

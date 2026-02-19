@@ -1,10 +1,10 @@
 import { history } from 'umi'
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 import api from 'api'
 
 const { loginUser } = api
 
-export default {
+const loginModel = {
   namespace: 'login',
 
   state: {},
@@ -35,3 +35,5 @@ export default {
     },
   },
 }
+
+export default loginModel

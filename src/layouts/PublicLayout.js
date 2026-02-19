@@ -1,3 +1,3 @@
-export default ({ children }) => {
-  return children
-}
+const PublicLayout = ({ children }) => children
+
+export default PublicLayout

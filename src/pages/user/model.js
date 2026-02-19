@@ -1,5 +1,5 @@
 import modelExtend from 'dva-model-extend'
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 import api from 'api'
 import { pageModel } from 'utils/model'
 

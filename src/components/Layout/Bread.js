@@ -4,7 +4,7 @@ import { Breadcrumb } from 'antd'
 import { Link, withRouter } from 'umi'
 import { i18n } from '@lingui/core'
 import iconMap from 'utils/iconMap'
-const { pathToRegexp } = require('path-to-regexp')
+import { pathToRegexp } from 'path-to-regexp'
 import { queryAncestors } from 'utils'
 import styles from './Bread.less'
 

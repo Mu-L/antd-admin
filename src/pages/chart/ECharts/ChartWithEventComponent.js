@@ -3,14 +3,22 @@ import ReactEcharts from 'echarts-for-react'
 
 const ChartWithEventComponent = () => {
   const onChartReady = echart => {
-    /* eslint-disable */
-    console.log('echart is ready', echart)
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.log('echart is ready', echart)
+    }
   }
   const onChartLegendselectchanged = (param, echart) => {
-    console.log(param, echart)
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.log(param, echart)
+    }
   }
   const onChartClick = (param, echart) => {
-    console.log(param, echart)
+    if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
+      console.log(param, echart)
+    }
   }
   const getOtion = () => {
     const option = {

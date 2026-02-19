@@ -46,7 +46,7 @@ const languages = {
   'pt-br': ptBR
 }
 
-const { defaultLanguage } = i18n
+// remove unused defaultLanguage
 
 @withRouter
 class Layout extends Component {
@@ -69,6 +69,7 @@ class Layout extends Component {
       i18n.activate(language)
     } catch (err) {
       // If loading fails, fall back to default language and log a warning.
+      // eslint-disable-next-line no-console
       console.warn(`Failed to load messages for locale "${language}":`, err)
     }
   }

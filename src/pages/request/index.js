@@ -72,7 +72,10 @@ class RequestPage extends React.Component {
         })
       })
       .catch(errorInfo => {
-        console.log(errorInfo)
+        if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.error(errorInfo)
+        }
         /*
         errorInfo:
           {

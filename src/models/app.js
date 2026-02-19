@@ -1,9 +1,7 @@
-/* global window */
-
 import { history } from 'umi'
 import { stringify } from 'qs'
 import store from 'store'
-const { pathToRegexp } = require("path-to-regexp")
+import { pathToRegexp } from 'path-to-regexp'
 import { ROLE_TYPE } from 'utils/constant'
 import { queryLayout } from 'utils'
 import { CANCEL_REQUEST_MESSAGE } from 'utils/constant'
@@ -20,7 +18,7 @@ const goDashboard = () => {
   }
 }
 
-export default {
+const appModel = {
   namespace: 'app',
   state: {
     routeList: [
@@ -158,3 +156,5 @@ export default {
     },
   },
 }
+
+export default appModel
