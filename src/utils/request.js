@@ -4,7 +4,6 @@ import { parse, compile } from 'path-to-regexp'
 import { message } from 'antd'
 import { CANCEL_REQUEST_MESSAGE } from 'utils/constant'
 
-const { CancelToken } = axios
 window.cancelRequest = new Map()
 
 export default function request(options) {
@@ -33,11 +32,12 @@ export default function request(options) {
   }
 
   options.url = url
-  options.cancelToken = new CancelToken(cancel => {
-    window.cancelRequest.set(Symbol(Date.now()), {
-      pathname: window.location.pathname,
-      cancel,
-    })
+  // Use AbortController signal for request cancellation (compatible with axios v2)
+  const controller = new AbortController()
+  options.signal = controller.signal
+  window.cancelRequest.set(Symbol(Date.now()), {
+    pathname: window.location.pathname,
+    abort: reason => controller.abort(reason || CANCEL_REQUEST_MESSAGE),
   })
 
   return axios(options)
@@ -62,9 +62,10 @@ export default function request(options) {
       })
     })
     .catch(error => {
-      const { response, message: errMsg } = error
+      const { response, message: errMsg, code, name } = error
 
-      if (String(errMsg) === CANCEL_REQUEST_MESSAGE) {
+      // axios v2 cancellation can surface as ERR_CANCELED / CanceledError or message matching our sentinel
+      if (String(errMsg) === CANCEL_REQUEST_MESSAGE || code === 'ERR_CANCELED' || name === 'CanceledError') {
         return {
           success: false,
         }
